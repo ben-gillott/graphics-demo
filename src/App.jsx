@@ -11,10 +11,9 @@ const Scene = () => {
   return (
     <>
       <Box ref={boxRef} args={[1, 1, 1]} rotation={[0.5, 0, 0]}>
-        <meshNormalMaterial />
+        <meshStandardMaterial color={"orange"} />
       </Box>
-      {/* <ambientLight /> */}
-      {/* <pointLight /> */}
+      <pointLight position={[10, 10, 10]} />
     </>
   );
 };
