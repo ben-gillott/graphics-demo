@@ -36,17 +36,16 @@ const TestMaterial = () => {
   return <colorShiftMaterial ref={matRef} color='hotpink' time={0} />;
 };
 
-const BoxScene = () => {
+const BoxScene = props => {
   const boxRef = useRef();
   useFrame((state, delta) => {
-    boxRef.current.rotation.y += 0.001;
+    boxRef.current.rotation.y += 0.002;
     boxRef.current.time += 0.001;
   });
 
   return (
-    <Box ref={boxRef} args={[1, 1, 1]} rotation={[0.5, 0, 0]}>
-      {/* <meshStandardMaterial color={"orange"} /> */}
-      <TestMaterial />
+    <Box position={props.position} ref={boxRef} args={[1, 1, 1]} rotation={[0.5, 0, 0]}>
+      <meshStandardMaterial color={"orange"} />
     </Box>
   );
 };
@@ -67,7 +66,7 @@ const App = () => {
       <OrbitControls />
       <pointLight position={[10, 10, 10]} />
       {/* <PlaneScene /> */}
-      <BoxScene />
+      <BoxScene position={[1, 0, 0]} />
     </Canvas>
   );
 };
